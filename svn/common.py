@@ -301,7 +301,7 @@ class CommonClient(svn.common_base.CommonBase):
         root = xml.etree.ElementTree.fromstring(raw)
 
         list_ = root.findall('target/entry')
-        list_ += root.findall('changelist/entry')
+        list_ += root.findall('changelist[@name!="ignore-on-commit"]/entry')
         for entry in list_:
             entry_attr = entry.attrib
             name = entry_attr['path']
